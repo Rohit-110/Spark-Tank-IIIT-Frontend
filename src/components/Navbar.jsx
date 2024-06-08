@@ -39,32 +39,32 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header id="header" className={`z-10 fixed top-0 left-0 right-0 ${scrolled ? 'bg-white' : ' bg-slate-800'} transition-colors duration-300`} style={{ transition: 'background-color 0.3s, color 0.3s' }}>
+    <header id="header" className={`z-10 fixed top-0 left-0 right-0 ${scrolled ? 'bg-slate-800' : ' bg-slate-800'} transition-colors duration-300`} style={{ transition: 'background-color 0.3s, color 0.3s' }}>
       <div className="container mx-auto flex justify-between items-center p-4">
         <h1 className="text-3xl font-bold">
-          <Link to="/home" className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300`} style={{ textDecoration: 'none' }}>
+          <Link to="/home" className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300`} style={{ textDecoration: 'none' }}>
             Spark Tank IIIT
           </Link>
         </h1>
         <nav className="hidden lg:flex justify-around">
           <ul className="flex space-x-10 text-xl">
             <li>
-              <Link className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/home">
+              <Link className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/home">
                 Home
               </Link>
             </li>
             <li>
-              <Link className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/idea">
+              <Link className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/idea">
                 Idea
               </Link>
             </li>
             <li>
-              <Link className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/sumission">
+              <Link className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/sumission">
                 Submission
               </Link>
             </li>
             <li>
-              <Link className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/discuss">
+              <Link className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/discuss">
                 Discuss
               </Link>
             </li>
@@ -75,22 +75,22 @@ export default function Navbar() {
             <li onMouseEnter={toggleNotifications} onMouseLeave={toggleNotificationsOff}>
               <Link to="/notifications">
                 <button className="nav-link btn btn-info">
-                    <NotificationsNoneIcon className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
+                    <NotificationsNoneIcon className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
                 </button>
               </Link>
               <Notifications showNotifications={showNotifications} />
             </li>
             <li>
-              <button className="nav-link btn btn-danger">
-                <PowerSettingsNewIcon className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300`} />
-              </button>
-            </li>
-            <li>
               <Link to="/profile">
                 <button className="nav-link btn btn-primary">
-                    <PersonIcon className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
+                    <PersonIcon className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
                 </button>
               </Link>
+            </li>
+            <li>
+              <button className="nav-link btn btn-danger">
+                <PowerSettingsNewIcon className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300`} />
+              </button>
             </li>
           </ul>
         </nav>
@@ -126,7 +126,7 @@ export default function Navbar() {
           </li>
             <li onMouseEnter={toggleNotifications} onMouseLeave={toggleNotificationsOff}>
               <Link to="/notifications">
-                <NotificationsNoneIcon className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
+                <NotificationsNoneIcon className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
               </Link>
               <Notifications showNotifications={showNotifications} />
             </li>
@@ -137,7 +137,7 @@ export default function Navbar() {
           </li>
             <li>
               <Link to="/profile">
-                <PersonIcon className={`${scrolled ? 'text-black' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
+                <PersonIcon className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
               </Link>
             </li>
         </ul>
