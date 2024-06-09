@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.custom-gradient-bg {
+    background: linear-gradient(60deg, #010c34, #0625a4,#010c34);
+    box-shadow: 29px 29px 44px #747474, -29px -29px 44px #ffffff;
+  }
