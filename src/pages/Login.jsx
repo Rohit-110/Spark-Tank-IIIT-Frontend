@@ -48,7 +48,7 @@ const Login = () => {
                   onClick={() => setIsLogin(!isLogin)}
                   className="text-blue-500 hover:text-blue-700"
                 >
-                  <Link style={{ textDecoration: "none" }} to="/signup">
+                  <Link style={{ textDecoration: "none" }} to="/">
                     create a new account
                   </Link>
                 </button>
