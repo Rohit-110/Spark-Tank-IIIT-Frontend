@@ -7,6 +7,7 @@ import MySubmission from './pages/MySubmission.jsx';
 import Signup from './pages/Signup.jsx';
 import Submission from './pages/Submission.jsx';
 import Home from './pages/Home.jsx';
+import Idea from './pages/Idea.jsx';
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path = "/login" element={<Login/>} />
           <Route path = "/" element={<Signup/>}/>
+          <Route path = "/idea" element={<Idea/>}/>
           <Route path = "/home" element={<Home/>}/>
           <Route path = "/paymentsuccess" element={<PaymentSuccess/>}/>
           <Route path = "/submitform" element={<Form/>}/>
