@@ -31,7 +31,7 @@ const Profile = () => {
     const [appliers,setAppliers]=useState([]);
 
     useEffect(()=>{
-      axios.get(`${server}/student/me`,{
+      axios.get(`${server}/user/me`,{
         withCredentials: true,
       }).then((res)=>{
         console.log(res);
