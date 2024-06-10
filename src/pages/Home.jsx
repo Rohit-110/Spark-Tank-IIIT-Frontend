@@ -33,8 +33,8 @@ const Home = () => {
         <div className='mt-4 mx-5 font-mono tracking-widest text-2xl font-semibold '>
             Proceed  Further
             <div className='flex flex-row mt-3'>
-                <Link to='/submission'><Button variant="outlined" className='m-2'>View Others Submission</Button></Link>
-                <Link to='/idea'><Button variant="outlined" className='m-2'>Submit Your Application</Button></Link>
+                <Link to='/submission'><Button variant="contained" className='m-2'>View Others Submission</Button></Link>
+                <Link to='/idea'><Button variant="contained" className='m-2'>Submit Your Application</Button></Link>
             </div>
 
         </div>

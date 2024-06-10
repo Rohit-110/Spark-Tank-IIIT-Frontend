@@ -5,10 +5,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      content: {
-        'open-quote': '\201C', 
-        'close-quote': '\201D', 
-      },
     },
   },
   plugins: [],
