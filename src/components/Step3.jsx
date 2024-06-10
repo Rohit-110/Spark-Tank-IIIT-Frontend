@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios'
+import {server} from '../index.js'
+import toast from 'react-hot-toast';
 
-const Step2 = ({ nextStep, prevStep }) => {
+const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
   const [termsChecked, setTermsChecked] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -10,10 +12,28 @@ const Step2 = ({ nextStep, prevStep }) => {
 
   const checkoutHandler= async (amount)=>{
 
-    const {data : {key}} = await axios.get("http://localhost:4000/api/getkey");
-    const {data : {orders}} = await axios.post("http://localhost:4000/api/checkout",{
+    try{
+        const {data} = await axios.post(`${server}/form/submitform`,{
+            formData
+      },{
+        headers:{          
+          "Content-Type":"application/json",          
+        },
+        withCredentials: true,
+      }    
+        );
+        toast.success("Form Submitted Succefully");
+    }catch(error){
+            toast.error('Form NOT Sunmitted');
+            console.log(error.response.data.message);
+        }
+
+    const {data : {key}} = await axios.get("https://spark-tank-iiit-backend.onrender.com/api/user/getkey");
+    const {data : {orders}} = await axios.post("https://spark-tank-iiit-backend.onrender.com/api/user/checkout",{
         amount
     })
+
+
     const options = {
         "key": key,
         "amount": orders.amount, 
@@ -22,9 +42,9 @@ const Step2 = ({ nextStep, prevStep }) => {
         "description": "Test Transaction",
         "image": "https://upload.wikimedia.org/wikipedia/en/2/2e/Indian_Institute_of_Information_Technology%2C_Allahabad_Logo.png",
         "order_id": orders.id, 
-        "callback_url": "http://localhost:4000/api/paymentverification",
+        "callback_url": "https://spark-tank-iiit-backend.onrender.com/api/user/paymentverification",
         "prefill": {
-            "name": "Gaurav Kumar",
+            "name": " ",
             "email": "gaurav.kumar@example.com",
             "contact": "9000090000"
         },
@@ -37,6 +57,9 @@ const Step2 = ({ nextStep, prevStep }) => {
     };
     var razor = new window.Razorpay(options);
     razor.open();
+
+
+
 }
 
 
@@ -46,12 +69,12 @@ const Step2 = ({ nextStep, prevStep }) => {
       <div className="w-full max-w-md">
         <div className="mb-4">
           <label className="block mb-2">Amount Requested(in Rs)</label>
-          <input type="number" className="w-full p-2 border text-black border-gray-300 rounded" />
+          <input type="number" value={formData.amountRequested} onChange={handleInputChange('amountRequested')}  className="w-full p-2 border text-black border-gray-300 rounded" />
         </div>
         <div className="mb-4">
           <label className="block mb-2">Terms & Conditions</label>
           <div className="flex items-center">
-            <input type="checkbox" checked={termsChecked} onChange={handleCheckboxChange} className="mr-2" />
+            <input type="checkbox" className="mr-2" />
             <span>
               I agree to the <a href="/terms" className="text-blue-500">terms and conditions</a>
             </span>
@@ -70,4 +93,4 @@ const Step2 = ({ nextStep, prevStep }) => {
   );
 };
 
-export default Step2;
+export default Step3;

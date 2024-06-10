@@ -1,17 +1,17 @@
 import React from 'react';
 
-const Step2 = ({ nextStep, prevStep }) => {
+const Step2 = ({ nextStep, prevStep, handleInputChange, formData }) => {
   return (
     <div className=" flex flex-col items-center bg-slate-700  text-white mx-72 h-full p-4 pt-16 pb-28 rounded-3xl">
       <h2 className="text-2xl mb-4">Step 2: Startup Details</h2>
       <div className=' flex flex-row'>
             <div className="mb-8 mr-4">
                 <label className="block mb-2">Idea Subject</label>
-                <input type="text" className="w-full p-2  text-black   border border-gray-300 rounded" />
+                <input type="text" value={formData.ideaSubject} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded" />
             </div>
             <div className="mb-8 ml-4">
                 <label className="block mb-2">Market Size</label>
-                <input type="text" className="w-full p-2  text-black   border border-gray-300 rounded" />
+                <input type="text" value={formData.marketSize} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded" />
             </div>
         </div>
       <div className=' flex flex-row'>
@@ -21,27 +21,27 @@ const Step2 = ({ nextStep, prevStep }) => {
             </div>
             <div className="mb-8 ml-4">
                 <label className="block mb-2">Target Market</label>
-                <input type="text" className="w-full p-2  text-black   border border-gray-300 rounded" />
+                <input type="text"  value={formData.targetMarket} onChange={handleInputChange()} className="w-full p-2  text-black   border border-gray-300 rounded" />
             </div>
       </div>
       <div className=' flex flex-row'>
             <div className="mb-8 mr-4">
                 <label className="block mb-2">Detailed Description</label>
-                <textarea className="w-full p-2  text-black   border border-gray-300 rounded"></textarea>           
+                <textarea  value={formData.detailedDescription} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded"></textarea>           
             </div>
             <div className="mb-8 ml-4">
                 <label className="block mb-2">Marketing Plan</label>
-                <textarea className="w-full p-2  text-black   border border-gray-300 rounded"></textarea>
+                <textarea  value={formData.marketingPlan} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded"></textarea>
             </div>
       </div>
       <div className=' flex flex-row'>
             <div className="mb-8 mr-4">
                 <label className="block mb-2">Potential Risks</label>
-                <textarea className="w-full p-2  text-black   border border-gray-300 rounded"></textarea>
+                <textarea value={formData.potentialRisks} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded"></textarea>
             </div>
             <div className="mb-8 ml-4">
                 <label className="block mb-2">Sales Strategy</label>
-                <textarea className="w-full p-2  text-black   border border-gray-300 rounded"></textarea>
+                <textarea value={formData.salesStrategy} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded"></textarea>
             </div>       
       </div>
         <div className="flex flex-row justify-evenly ">

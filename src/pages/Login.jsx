@@ -1,20 +1,41 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import img1 from '../assets/img3.jpg'
+import { Context } from '../index.js'
+import { server } from '../index.js';
+import { useContext } from 'react';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-  };
-
-
-
+  const {isAuthenticated, setIsAuthenticated} = useContext(Context);
+  const [email, setEmail]=useState("");
+  const [password, setpassword]=useState("");
+  
+  
+  const handleSubmit = async(e)=>{
+      e.preventDefault();
+      try{
+        const {data} = await axios.post(`${server}/user/login`,{
+        email,password,
+      },{
+        headers:{          
+          "Content-Type":"application/json",          
+        },
+        withCredentials: true,
+      }    
+    );
+    toast.success(data.message);
+    setIsAuthenticated(true);
+    window.location.href = '/home';
+  }catch(error){
+          toast.error('Invalid Email or Password');
+          console.log(error.response.data.message);
+          setIsAuthenticated(false);
+    }    
+};
   return (
     <div >
       <div className=" min-h-screen flex flex-col md:flex-row items-center justify-center bg-dark bg-cover bg-center bg-no-repeat "  style={{ backgroundImage: `url(${img1})` }}>
@@ -88,7 +109,7 @@ const Login = () => {
                   required
                   className="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setpassword(e.target.value)}
                 />
               </div>
               <div>

@@ -7,6 +7,34 @@ import Navbar from '../components/Navbar';
 
 function Form() {
   const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState({
+    // Initial state with all the required fields
+    name: '',
+    enrollmentNo: '',
+    batch: '',
+    mobileNo: '',
+    emailId: '',
+    age: '',
+    aadharNo: '',
+    ideaSubject: '',
+    detailedDescription: '',
+    marketSize: '',
+    targetMarket: '',
+    marketingPlan: '',
+    potentialRisks: '',
+    salesStrategy: '',
+    amountRequest: '',
+    termsAccepted: false,
+    password: ''
+  });
+
+  const handleInputChange = (input) => (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === 'checkbox' ? checked : value
+    });
+  };
 
   const nextStep = () => {
     setStep(prevStep => prevStep + 1);
@@ -19,13 +47,13 @@ function Form() {
   const renderStep = () => {
     switch (step) {
       case 1:
-        return <Step1 nextStep={nextStep} />;
+        return <Step1 nextStep={nextStep}  handleInputChange={handleInputChange} formData={formData} />;
       case 2:
-        return <Step2 nextStep={nextStep} prevStep={prevStep} />;
+        return <Step2 nextStep={nextStep} prevStep={prevStep} handleInputChange={handleInputChange} formData={formData}  />;
       case 3:
-        return <Step3 prevStep={prevStep} />;
+        return <Step3 prevStep={prevStep} handleInputChange={handleInputChange} formData={formData}  />;
       default:
-        return <Step1 nextStep={nextStep} />;
+        return <Step1 nextStep={nextStep} handleInputChange={handleInputChange} formData={formData}  />;
     }
   };
 

@@ -13,22 +13,17 @@ const Signup = () => {
   const [password, setpassword] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
   const [name, setname] = useState('');
-  const [isAlumni, setisAlumni] = useState('');
   const [mobile, setmobile] = useState('');
   const [degree, setdegree] = useState('');
   const [batchYear, setbatchYear] = useState('');
-  const [resumeLink, setresumeLink] = useState('');
-  const [photo, setphoto] = useState('');
 
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
-  const { checkemail, setCheckemail } = useContext(Context);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let { data } = await axios.post(`${server}/student/new`, {
-        email, password, confirmPassword, studentId, isAlumni, mobile, degree, batchYear, resumeLink
-      }, {
+      let { data } = await axios.post(`${server}/user/new`, {
+        email, password, name , studentId,  mobile, degree, batchYear}, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -36,8 +31,7 @@ const Signup = () => {
       });
       toast.success("Logged In Successfully");
       setIsAuthenticated(true);
-      if (isAlumni === "true") window.location.href = '/alumHome';
-      else window.location.href = '/home';
+      window.location.href = '/home';
     } catch (err) {
       toast.error(err.response.data.message);
     }
@@ -122,7 +116,7 @@ const Signup = () => {
                     required
                     className="mt-1 p-2 block w-full border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     value={email}
-                    onChange={(e)=>{setEmail(e.target.value);setCheckemail(e.target.value)}}
+                    onChange={(e)=>{setEmail(e.target.value);}}
                     />
                 </div>
                 <div className="flex space-x-4">
