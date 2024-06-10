@@ -30,6 +30,7 @@ function Form() {
 
   const handleInputChange = (input) => (e) => {
     const { name, value, type, checked } = e.target;
+    console.log(e);
     setFormData({
       ...formData,
       [name]: type === 'checkbox' ? checked : value

@@ -7,6 +7,7 @@ import Signup from './pages/Signup.jsx';
 import Submission from './pages/Submission.jsx';
 import Home from './pages/Home.jsx';
 import Idea from './pages/Idea.jsx';
+import Profile from './pages/Profile.jsx';
 import { Toaster } from 'react-hot-toast';
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path = "/login" element={<Login/>} />
           <Route path = "/" element={<Signup/>}/>
+          <Route path = "/profile" element={<Profile/> }/>
           <Route path = "/idea" element={<Idea/>}/>
           <Route path = "/home" element={<Home/>}/>
           <Route path = "/paymentsuccess" element={<PaymentSuccess/>}/>
