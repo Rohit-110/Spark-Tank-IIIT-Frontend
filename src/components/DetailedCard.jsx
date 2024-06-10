@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DetailedCard = ({ name, enrollmentno, batch, mobile, email, aadhar, description, idea, marketsize, verified, visible, onClose }) => {
+const DetailedCard = ({ name, enrollmentno, batch, mobile, email, aadhar,teamname, description, idea, marketsize, verified, visible, onClose }) => {
   if (!visible) return null;
 
   const handleOnClose = (e) => {
@@ -42,6 +42,9 @@ const DetailedCard = ({ name, enrollmentno, batch, mobile, email, aadhar, descri
           <div className="px-6 py-4 border-t border-gray-200">
             <h2 className="text-3xl font-bold mb-4 text-orange-700">Startup Details</h2>
             <div className="text-black">
+              <div className="mb-2 mx-2">
+                <span className="font-bold">Team Name:</span><span className="text-blue-500 m-2">{teamname}</span>
+              </div>
               <div className="mb-2 mx-2">
                 <span className="font-bold">Idea:</span><span className="text-blue-500 m-2">{idea}</span>
               </div>

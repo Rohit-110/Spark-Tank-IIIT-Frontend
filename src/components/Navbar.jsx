@@ -1,26 +1,33 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import Notifications from './Notifications';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import PersonIcon from '@mui/icons-material/Person';
+import toast from 'react-hot-toast';
+import {server, Context} from '../index.js';
+import axios from 'axios'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [showNotifications, setShowNotifications] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   let timeout;
+  const {isAuthenticated, setIsAuthenticated}= useContext(Context);
 
-  const toggleNotifications = () => {
-    clearTimeout(timeout);
-    setShowNotifications(true);
-  };
-
-  const toggleNotificationsOff = () => {
-    timeout = setTimeout(() => {
-      setShowNotifications(false);
-    }, 100);
-  };
+  const handleSignOut = async()=>{
+    console.log("Hello ");
+    try{
+        const {data} = await axios.get(`${server}/user/logout`,
+    {
+        withCredentials: true,
+    }
+    );
+    toast.success("You are logged out");
+    setIsAuthenticated(false);
+    window.location.href = '/signin';
+}catch(error){
+        toast.error("Error");
+        setIsAuthenticated(true);
+    }
+};
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -58,10 +65,18 @@ export default function Navbar() {
                 Idea
               </Link>
             </li>
-            <li>
-              <Link className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/sumission">
+            <li className="nav-item dropdown  text-white  transition-colors duration-300 hover:font-semibold hover:underline ">
+              <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Submission
               </Link>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                  <Link className="dropdown-item font-semibold hover:bg-slate-500" to="/mysubmission">My Submission</Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item  font-semibold hover:bg-slate-500" to="/submission">All Submission</Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 hover:font-semibold hover:underline`} to="/discuss">
@@ -72,14 +87,6 @@ export default function Navbar() {
         </nav>        
         <nav className="hidden lg:flex items-center space-x-4">
           <ul className="flex space-x-8 items-center">
-            <li onMouseEnter={toggleNotifications} onMouseLeave={toggleNotificationsOff}>
-              <Link to="/notifications">
-                <button className="nav-link btn btn-info">
-                    <NotificationsNoneIcon className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
-                </button>
-              </Link>
-              <Notifications showNotifications={showNotifications} />
-            </li>
             <li>
               <Link to="/profile">
                 <button className="nav-link btn btn-primary">
@@ -88,7 +95,7 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <button className="nav-link btn btn-danger">
+              <button  onClick={handleSignOut} className="nav-link btn btn-danger">
                 <PowerSettingsNewIcon className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300`} />
               </button>
             </li>
@@ -124,14 +131,8 @@ export default function Navbar() {
               Discuss
             </Link>
           </li>
-            <li onMouseEnter={toggleNotifications} onMouseLeave={toggleNotificationsOff}>
-              <Link to="/notifications">
-                <NotificationsNoneIcon className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300 cursor-pointer`} />
-              </Link>
-              <Notifications showNotifications={showNotifications} />
-            </li>
           <li>
-            <button className="nav-link btn btn-danger">
+            <button  onClick={handleSignOut} className="nav-link btn btn-danger">
               <PowerSettingsNewIcon className="text-white" />
             </button>
           </li>

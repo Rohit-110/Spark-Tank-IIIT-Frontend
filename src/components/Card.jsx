@@ -1,21 +1,33 @@
-import React from 'react'
-import '../index.css'
-import { Profiler } from 'react'
-const Card = ({team, status, prof , org , isverified}) => {
+import React from 'react';
+import '../index.css';
+
+const Card = ({ teamname, status, idea, investor, isverified }) => {
   return (
     <>
-        <table className='flex flex-col justify-evenly w-full bg-orange-300 rounded-3xl border-x-yellow-800 inline-table  '>
-            <tr className='flex flex-row justify-between m-1 '>
-                <td className='text-2xl p-2 '>Team Name :<span className='text-white'> { team}</span> </td>
-                <td className='text-2xl p-2'>Status :<span className="text-red-500"> {status}</span> </td>
-            </tr>
-            <tr className='flex flex-row justify-between m-1 text-nowrap'>
-                <td className='text-2xl   p-2 '>Professor: <span className='text-white'> { prof }</span> </td>
-                <td className='text-2xl  p-2 '>Organisation :<span className='text-white'> { org }</span> </td>
-            </tr>   
-        </table>
+      <div className='flex flex-col justify-evenly bg-slate-200 rounded-xl border-x-yellow-800 p-4' style={{ width: '48rem' }}>
+        <div className='flex flex-row justify-between m-1'>
+          <div className='text-2xl p-2'>
+            Team Name :<span className='text-blue-400'> {teamname}</span>
+          </div>
+        </div>
+        <div className='flex flex-row justify-between m-1'>
+          <div className='text-2xl p-2'>
+            Idea :<span className='text-blue-400'> {idea}</span>
+          </div>
+        </div>
+        <div className='flex flex-row justify-between m-1'>
+          <div className='text-2xl p-2'>
+            Status: <span className='text-blue-400'> {status}</span>
+          </div>
+        </div>
+        <div className='flex flex-row justify-between m-1'>
+          <div className='text-2xl p-2'>
+            Investor :<span className='text-blue-400'> {investor}</span>
+          </div>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

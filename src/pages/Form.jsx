@@ -9,16 +9,18 @@ function Form() {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     // Initial state with all the required fields
-    name: '',
+    name: '',    
     enrollmentNo: '',
     batch: '',
     mobileNo: '',
     emailId: '',
     age: '',
+    teamname: '',
     aadharNo: '',
     ideaSubject: '',
     detailedDescription: '',
     marketSize: '',
+    uso:'',
     targetMarket: '',
     marketingPlan: '',
     potentialRisks: '',

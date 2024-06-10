@@ -74,7 +74,7 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
         <div className="mb-4">
           <label className="block mb-2">Terms & Conditions</label>
           <div className="flex items-center">
-            <input type="checkbox" className="mr-2" />
+            <input  type="checkbox" className="mr-2" />
             <span>
               I agree to the <a href="/terms" className="text-blue-500">terms and conditions</a>
             </span>

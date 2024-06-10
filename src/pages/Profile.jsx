@@ -95,7 +95,7 @@ const Profile = () => {
                                             <p className="mb-1">Batch</p>
                                         </div>
                                         <div className="col-sm-9">
-                                            <p className="text-muted mb-0">{ (appliers.batch=='')? appliers.batch : '2026'}</p>
+                                            <p className="text-muted mb-0">{ (appliers.batch==='')? appliers.batch : '2026'}</p>
                                         </div>
                                     </div>
                                 </div>

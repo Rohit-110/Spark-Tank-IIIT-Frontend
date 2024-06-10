@@ -9,6 +9,7 @@ import Home from './pages/Home.jsx';
 import Idea from './pages/Idea.jsx';
 import Profile from './pages/Profile.jsx';
 import { Toaster } from 'react-hot-toast';
+import Discuss from './pages/Discuss.jsx';
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path = "/login" element={<Login/>} />
           <Route path = "/" element={<Signup/>}/>
+          <Route path = "/discuss" element={<Discuss/>}/>
           <Route path = "/profile" element={<Profile/> }/>
           <Route path = "/idea" element={<Idea/>}/>
           <Route path = "/home" element={<Home/>}/>
