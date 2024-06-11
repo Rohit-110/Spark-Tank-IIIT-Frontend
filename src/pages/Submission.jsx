@@ -14,7 +14,7 @@ const Submission = () => {
     const [tasks,setTasks]=useState([]);
 
         useEffect(()=>{
-                axios.get(`${server}/form/submission`,{
+                const {data} = axios.get(`${server}/form/submission`,{
                     withCredentials: true,
                 }).then(res=>{
                     setTasks(res.data.entrepreneur);
