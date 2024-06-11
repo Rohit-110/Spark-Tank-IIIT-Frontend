@@ -12,7 +12,9 @@ import { Context } from '..'
 
 const Home = () => {
     const {isAuthenticated}= useContext(Context);
-    if(!isAuthenticated)window.location.href = '/';
+    if(!isAuthenticated){
+        window.location.href = '/';
+    }
   return (
     <>
         <Navbar/>

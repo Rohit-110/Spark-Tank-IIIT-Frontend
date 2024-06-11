@@ -8,10 +8,10 @@ import { useState } from 'react';
 
 export const server="https://spark-tank-iiit-backend.onrender.com/api";
 
-export const Context = createContext({isAuthenticated : false});
+export const Context = createContext();
 
 const Appwrapper = () =>{
-  const [isAuthenticated, setIsAuthenticated] =useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] =useState({});
   const [checkemail, setCheckemail] =useState({});
   return(
