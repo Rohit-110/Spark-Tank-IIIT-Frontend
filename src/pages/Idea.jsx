@@ -5,19 +5,8 @@ import SendIcon from '@mui/icons-material/Send';
 import { Link } from 'react-router-dom';
 import { Context } from '..';
 import useContext from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const Idea = () => {
-    const {isAuthenticated}= useContext(Context);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-      if (!isAuthenticated) {
-        navigate('/');
-      }
-    }, [isAuthenticated, navigate]);
-    
   return (
     <>
     <Navbar/>
