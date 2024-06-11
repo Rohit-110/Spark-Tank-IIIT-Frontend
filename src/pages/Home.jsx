@@ -7,19 +7,8 @@ import img5 from '../assets/img9.jpg'
 import img6 from '../assets/img8.jpg'
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom'
-import { useContext,useEffect } from 'react'
-import { Context } from '..'
-import { useNavigate } from 'react-router-dom'
 
 const Home = () => {
-    const {isAuthenticated}= useContext(Context);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-      if (!isAuthenticated) {
-        navigate('/');
-      }
-    }, [isAuthenticated, navigate]);
   return (
     <>
         <Navbar/>

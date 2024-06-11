@@ -20,21 +20,21 @@ const Submission = () => {
         navigate('/');
       }
     }, [isAuthenticated, navigate]);
-const [showCard, setShowCard]=useState(true);
-const handleOnClose=()=>{setShowCard(false)};
-const [tasks,setTasks]=useState([]);
+    const [showCard, setShowCard]=useState(true);
+    const handleOnClose=()=>{setShowCard(false)};
+    const [tasks,setTasks]=useState([]);
 
-    useEffect(()=>{
-            axios.get(`${server}/form/submission`,{
-                withCredentials: true,
-            }).then(res=>{
-                setTasks(res.data.entrepreneur);
-                console.log(res.data.entrepreneur);
-            }).catch(e=>{
-                toast.error("Eror");
-            })
-    },[]);
-  
+        useEffect(()=>{
+                axios.get(`${server}/form/submission`,{
+                    withCredentials: true,
+                }).then(res=>{
+                    setTasks(res.data.entrepreneur);
+                    console.log(res.data.entrepreneur);
+                }).catch(e=>{
+                    toast.error("Eror");
+                })
+        },[]);
+    
 
 
   return (

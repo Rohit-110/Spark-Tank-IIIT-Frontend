@@ -17,6 +17,7 @@ const Idea = () => {
         navigate('/');
       }
     }, [isAuthenticated, navigate]);
+    
   return (
     <>
     <Navbar/>
