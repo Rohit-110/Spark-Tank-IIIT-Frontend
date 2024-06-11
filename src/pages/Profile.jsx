@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { server } from '..';
@@ -22,6 +21,7 @@ const profileData = {
 
 const Profile = () => {    
     const {isAuthenticated, setIsAuthenticated}= useContext(Context);
+    if(!isAuthenticated)window.location.href = '/';
 
     useEffect(() => {
         AOS.init({ duration: 1500 })
@@ -42,7 +42,7 @@ const Profile = () => {
         toast.error('Error');
       })
     
-    },[]);
+    },);
   
   
     return (

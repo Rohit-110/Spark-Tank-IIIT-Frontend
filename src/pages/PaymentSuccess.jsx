@@ -1,9 +1,14 @@
 import { useSearchParams } from "react-router-dom"
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
+import { Context } from "..";
+import useContext from 'react';
+
 const PaymentSuccess = () => {
     const search = useSearchParams()[0]
     const reference_num = search.get("reference");
+    const {isAuthenticated}= useContext(Context);
+    if(!isAuthenticated)window.location.href = '/';
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">

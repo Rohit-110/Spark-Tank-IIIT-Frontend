@@ -17,7 +17,7 @@ const Signup = () => {
   const [degree, setdegree] = useState('');
   const [batchYear, setbatchYear] = useState('');
 
-  const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const {  setIsAuthenticated } = useContext(Context);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

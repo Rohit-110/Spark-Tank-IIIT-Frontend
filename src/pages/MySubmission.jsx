@@ -7,8 +7,13 @@ import Navbar from '../components/Navbar'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import {server} from '../index.js'
+import { Context } from '../index.js'
+import { useContext } from 'react'
 
 const MySubmission = () => {
+  
+const {isAuthenticated}= useContext(Context);
+if(!isAuthenticated)window.location.href = '/';
 
     const [showCard, setShowCard]=useState(true);
     function handleOnClose(){

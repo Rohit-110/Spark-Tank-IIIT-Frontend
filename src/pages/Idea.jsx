@@ -3,8 +3,12 @@ import Navbar from '../components/Navbar'
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import { Link } from 'react-router-dom';
+import { Context } from '..';
+import useContext from 'react'
 
 const Idea = () => {
+    const {isAuthenticated}= useContext(Context);
+    if(!isAuthenticated)window.location.href = '/';
   return (
     <>
     <Navbar/>

@@ -7,11 +7,15 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import {server} from '../index.js'
+import useContext from 'react'
+import { Context } from '../index.js'
 
 const Submission = () => {
 const [showCard, setShowCard]=useState(true);
 const handleOnClose=()=>{setShowCard(false)};
 const [tasks,setTasks]=useState([]);
+const {isAuthenticated}= useContext(Context);
+if(!isAuthenticated)window.location.href = '/';
 
     useEffect(()=>{
             axios.get(`${server}/form/submission`,{

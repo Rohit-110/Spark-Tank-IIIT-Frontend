@@ -4,8 +4,13 @@ import Step2 from '../components/Step2';
 import Step3 from '../components/Step3';
 import ProgressBar from '../components/ProgressBar';
 import Navbar from '../components/Navbar';
+import { Context } from '..';
+import { useContext } from 'react';
+
 
 function Form() {
+  const {isAuthenticated}= useContext(Context);
+  if(!isAuthenticated)window.location.href = '/';
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     // Initial state with all the required fields

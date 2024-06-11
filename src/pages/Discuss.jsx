@@ -1,7 +1,11 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
+import { Context } from '..';
+import { useContext } from 'react';
 
 const Discuss = () => {
+    const {isAuthenticated, setIsAuthenticated}= useContext(Context);
+    if(!isAuthenticated)window.location.href = '/';
   return (
     <>
     <Navbar/>

@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
 
-  const {isAuthenticated, setIsAuthenticated} = useContext(Context);
+  const {setIsAuthenticated} = useContext(Context);
   const [email, setEmail]=useState("");
   const [password, setpassword]=useState("");
   
