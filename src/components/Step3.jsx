@@ -12,22 +12,6 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
 
   const checkoutHandler= async (amount)=>{
 
-    try{
-        const {data} = await axios.post(`${server}/form/submitform`,{
-            formData
-      },{
-        headers:{          
-          "Content-Type":"application/json",          
-        },
-        withCredentials: true,
-      }    
-        );
-        toast.success("Form Submitted Succefully");
-    }catch(error){
-            toast.error('Form NOT Sunmitted');
-            console.log(error.response.data.message);
-    }
-
     const {data : {key}} = await axios.get("https://spark-tank-iiit-backend.onrender.com/api/user/getkey");
     const {data : {orders}} = await axios.post("https://spark-tank-iiit-backend.onrender.com/api/user/checkout",{
         amount
@@ -56,7 +40,23 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
         }
     };
     var razor = new window.Razorpay(options);
-    razor.open();
+    razor.open();   
+
+      try{
+        const {data} = await axios.post(`${server}/form/submitform`,{
+            formData
+      },{
+        headers:{          
+          "Content-Type":"application/json",          
+        },
+        withCredentials: true,
+      }    
+        );
+        toast.success("Form Submitted Succefully");
+    }catch(error){
+            toast.error('Form NOT Sunmitted');
+            console.log(error.response.data.message);
+    }
 
 
 

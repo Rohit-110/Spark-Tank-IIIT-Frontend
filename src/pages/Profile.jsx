@@ -34,12 +34,10 @@ const Profile = () => {
       axios.get(`${server}/user/me`,{
         withCredentials: true,
       }).then((res)=>{
-        console.log(res);
         setAppliers(res.data.student);
         setIsAuthenticated(true);
-        toast.success('Success');
       }).catch((error)=>{
-        toast.error('Error');
+        console.log(error);
       })
     
     },);
