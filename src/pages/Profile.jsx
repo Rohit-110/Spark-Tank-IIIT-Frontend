@@ -9,6 +9,8 @@ import toast from 'react-hot-toast';
 import { useContext } from 'react';
 import { Context } from '..';
 import img1 from '../assets/img2.png'
+import { useNavigate } from 'react-router-dom';
+
 const profileData = {
     image: img1,
     name: "Jai Khanna",
@@ -21,7 +23,13 @@ const profileData = {
 
 const Profile = () => {    
     const {isAuthenticated, setIsAuthenticated}= useContext(Context);
-    if(!isAuthenticated)window.location.href = '/';
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (!isAuthenticated) {
+        navigate('/');
+      }
+    }, [isAuthenticated, navigate]);
 
     useEffect(() => {
         AOS.init({ duration: 1500 })

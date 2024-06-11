@@ -6,11 +6,19 @@ import ProgressBar from '../components/ProgressBar';
 import Navbar from '../components/Navbar';
 import { Context } from '..';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 function Form() {
   const {isAuthenticated}= useContext(Context);
-  if(!isAuthenticated)window.location.href = '/';
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate]);
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     // Initial state with all the required fields

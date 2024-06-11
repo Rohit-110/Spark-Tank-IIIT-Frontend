@@ -8,12 +8,19 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import {server} from '../index.js'
 import { Context } from '../index.js'
-import { useContext } from 'react'
+import { useContext  } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const MySubmission = () => {
   
 const {isAuthenticated}= useContext(Context);
-if(!isAuthenticated)window.location.href = '/';
+const navigate = useNavigate();
+
+useEffect(() => {
+  if (!isAuthenticated) {
+    navigate('/');
+  }
+}, [isAuthenticated, navigate]);
 
     const [showCard, setShowCard]=useState(true);
     function handleOnClose(){

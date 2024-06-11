@@ -3,12 +3,20 @@ import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
 import { Context } from "..";
 import useContext from 'react';
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const PaymentSuccess = () => {
     const search = useSearchParams()[0]
     const reference_num = search.get("reference");
     const {isAuthenticated}= useContext(Context);
-    if(!isAuthenticated)window.location.href = '/';
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if (!isAuthenticated) {
+        navigate('/');
+      }
+    }, [isAuthenticated, navigate]);
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen">
