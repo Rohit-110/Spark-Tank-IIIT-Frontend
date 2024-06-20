@@ -9,20 +9,27 @@ import toast from 'react-hot-toast'
 import {server} from '../index.js'
 
 const Submission = () => {
-    const [showCard, setShowCard]=useState(true);
+    const [showCard, setShowCard]=useState(false);
     const handleOnClose=()=>{setShowCard(false)};
     const [tasks,setTasks]=useState([]);
 
-        useEffect(()=>{
-                const {data} = axios.get(`${server}/form/submission`,{
-                    withCredentials: true,
-                }).then(res=>{
-                    setTasks(res.data.entrepreneur);
-                    console.log(res.data.entrepreneur);
-                }).catch(e=>{
-                    toast.error("Eror");
-                })
-        },[]);
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const { data } = await axios.get(`${server}/form/submission`, {
+              withCredentials: true,
+            });
+            setTasks(data.entrepreneur);
+            console.log("data ", data);
+          } catch (e) {
+            toast.error("Error");
+            console.error("Error fetching data:", e);
+          }
+        };
+    
+        fetchData();
+      }, []);
+    
     
 
 
@@ -35,9 +42,9 @@ const Submission = () => {
                 tasks.map((task, index) => (
                     <div className='mt-28 flex justify-center'>
                         <button onClick={()=>{setShowCard(true)}}>
-                            <Card teamname={task.teamname} status={task.status} investor={task.investor} prof={task.idea} />
+                            <Card teamname={task.teamname} status={task.verified} investor={task.uso} idea={task.ideaSubject} />
                         </button>                
-                        <DetailedCard name={task.name}  enrollmentno ={task.enrollmentno} batch={task.enrollmentNo} mobile ={task.mobileNo} email={task.emailId} aadhar={task.aadharNo} teamname={task.teamname} idea={task.idea} description={task.description} marketsize={task.marketsize} verified={(task.verified) ? 'Verified' :'Not Verifed'} visible={showCard} onClose={handleOnClose} />
+                        <DetailedCard name={task.name}  enrollmentno ={task.enrollmentNo} batch={task.batch} mobile ={task.mobileNo} email={task.emailId} aadhar={task.aadharNo} teamname={task.teamname} idea={task.ideaSubject} description={task.detailedDescription} marketsize={task.marketSize} verified={task.verified} visible={showCard} onClose={handleOnClose} />
                         </div>
                 ))
             } 

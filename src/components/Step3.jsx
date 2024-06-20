@@ -1,66 +1,65 @@
 import React, { useState } from 'react';
 import axios from 'axios'
-import {server} from '../index.js'
-import toast from 'react-hot-toast';
+import {server} from '../index'
 
 const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
   const [termsChecked, setTermsChecked] = useState(false);
-
+  console.log("checking");
   const handleCheckboxChange = () => {
     setTermsChecked(!termsChecked);
   };
 
-  const checkoutHandler= async (amount)=>{
-
-    const {data : {key}} = await axios.get("https://spark-tank-iiit-backend.onrender.com/api/user/getkey");
-    const {data : {orders}} = await axios.post("https://spark-tank-iiit-backend.onrender.com/api/user/checkout",{
-        amount
-    })
-
-
-    const options = {
+  const helper = async()=>{
+    
+        try{
+            const {data} = await axios.post(`${server}/form/submitform`,{
+                formData
+          },{
+            headers:{          
+              "Content-Type":"application/json",          
+            },
+            withCredentials: true,
+          }    
+            );
+        }catch(error){
+                console.log(error.response.data.message);
+        }
+    }
+  const checkoutHandler = async (amount) => {
+    try {
+      console.log("Hello");
+      const { data: { key } } = await axios.get(`${server}/user/getkey`, { withCredentials: true });
+      const { data: { orders } } = await axios.post(`${server}/user/checkout`, { amount }, { withCredentials: true });
+  
+      const options = {
         "key": key,
-        "amount": orders.amount, 
+        "amount": orders.amount,
         "currency": "INR",
         "name": "IIIT ALLAHABAD E-CELL",
         "description": "Test Transaction",
         "image": "https://upload.wikimedia.org/wikipedia/en/2/2e/Indian_Institute_of_Information_Technology%2C_Allahabad_Logo.png",
-        "order_id": orders.id, 
-        "callback_url": "https://spark-tank-iiit-backend.onrender.com/api/user/paymentverification",
+        "order_id": orders.id,
+        "callback_url": `${server}/user/paymentverification`,
         "prefill": {
-            "name": " ",
-            "email": "gaurav.kumar@example.com",
-            "contact": "9000090000"
+          "name": " ",
+          "email": "gaurav.kumar@example.com",
+          "contact": "9000090000"
         },
         "notes": {
-            "address": "Razorpay Corporate Office"
+          "address": "Razorpay Corporate Office"
         },
         "theme": {
-            "color": "#3399cc"
+          "color": "#3399cc"
         }
-    };
-    var razor = new window.Razorpay(options);
-    razor.open();   
-
-      try{
-        const {data} = await axios.post(`${server}/form/submitform`,{
-            formData
-      },{
-        headers:{          
-          "Content-Type":"application/json",          
-        },
-        withCredentials: true,
-      }    
-        );
-        toast.success("Form Submitted Succefully");
-    }catch(error){
-            toast.error('Form NOT Sunmitted');
-            console.log(error.response.data.message);
+      };
+      var razor = new window.Razorpay(options);
+      razor.open();
+      helper();
+    } catch (error) {
+      console.error('Error:', error.message);
     }
-
-
-
-}
+  };
+  
 
 
   return (
@@ -69,7 +68,7 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
       <div className="w-full max-w-md">
         <div className="mb-4">
           <label className="block mb-2">Amount Requested(in Rs)</label>
-          <input type="number" value={formData.amountRequested} onChange={handleInputChange('amountRequested')}  className="w-full p-2 border text-black border-gray-300 rounded" />
+          <input type="number" className="w-full p-2 border text-black border-gray-300 rounded" />
         </div>
         <div className="mb-4">
           <label className="block mb-2">Terms & Conditions</label>

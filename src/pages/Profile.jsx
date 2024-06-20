@@ -10,15 +10,6 @@ import { useContext } from 'react';
 import { Context } from '..';
 import img1 from '../assets/img2.png'
 
-const profileData = {
-    image: img1,
-    name: "Jai Khanna",
-    email: "iit2022005@iiita.ac.in",
-    phoneNumber: "8360708882",
-    batch: "BTech IT '26",
-    summary: "I am a passionate software engineer with experience in web development. I enjoy learning new technologies and solving complex problems.",
-    resume: ""
-};
 
 const Profile = () => {    
     const { setIsAuthenticated}= useContext(Context);
@@ -53,7 +44,7 @@ const Profile = () => {
                             <div className="card mb-4">
                                 <div className="card-body text-center d-flex flex-column align-items-center">
                                     <img src={img1} alt="avatar" className="rounded-circle h-48 w-10" style={{ width: "150px" }} />
-                                    <p className="text-muted mb-4 font-semibold ">{profileData.summary}</p>
+                                    <p className="text-muted mb-4 font-semibold ">{"I am a passionate software engineer with experience in web development. I enjoy learning new technologies and solving complex problems."}</p>
                                 </div>
                             </div>
                         </div>

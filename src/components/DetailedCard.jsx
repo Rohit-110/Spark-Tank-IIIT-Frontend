@@ -6,6 +6,10 @@ const DetailedCard = ({ name, enrollmentno, batch, mobile, email, aadhar,teamnam
   const handleOnClose = (e) => {
     if (e.target.id === "container") onClose();
   };
+  
+  const getColor = () => {
+    return verified ? 'text-green-600' : 'text-red-600';
+  };
 
   return (
     <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-orange-200 bg-opacity-50 backdrop-blur-sm flex justify-center items-center">
@@ -57,7 +61,7 @@ const DetailedCard = ({ name, enrollmentno, batch, mobile, email, aadhar,teamnam
                 <span className="font-bold">Market Size:</span> <span className="text-blue-500 m-2">{marketsize}</span>
               </div>
               <div className="mb-2 mx-2">
-                <span className="font-bold">Verified:</span><span className="text-blue-500 m-2">{verified}</span>
+              Status: <span className={getColor()}>{verified ? 'Verified' : 'Not Verified'}</span>
               </div>
             </div>
           </div>
