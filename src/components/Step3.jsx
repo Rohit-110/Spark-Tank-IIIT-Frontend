@@ -9,11 +9,12 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
     setTermsChecked(!termsChecked);
   };
 
-  const helper = async()=>{
-    
-        try{
-            const {data} = await axios.post(`${server}/form/submitform`,{
-                formData
+ 
+  const checkoutHandler = async (amount) => {
+    try {
+       try{
+          const {data} = await axios.post(`${server}/form/submitform`,{
+              formData
           },{
             headers:{          
               "Content-Type":"application/json",          
@@ -25,10 +26,6 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
         }catch(error){
                 console.log(error.response.data.message);
         }
-    }
-  const checkoutHandler = async (amount) => {
-    try {
-      console.log("Hello");
       const { data: { key } } = await axios.get(`${server}/user/getkey`, { withCredentials: true });
       const { data: { orders } } = await axios.post(`${server}/user/checkout`, { amount }, { withCredentials: true });
   
@@ -55,7 +52,6 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
       };
       var razor = new window.Razorpay(options);
       razor.open();
-      helper();
     } catch (error) {
       console.error('Error:', error.message);
     }
