@@ -24,6 +24,7 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
             );
           console.log("checking in helper");
         }catch(error){
+            console.log("Error hai bhai");
                 console.log(error.response.data.message);
         }
       const { data: { key } } = await axios.get(`${server}/user/getkey`, { withCredentials: true });
