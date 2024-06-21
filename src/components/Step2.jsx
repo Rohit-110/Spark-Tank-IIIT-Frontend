@@ -6,8 +6,8 @@ const Step2 = ({ nextStep, prevStep, handleInputChange, formData }) => {
       <h2 className="text-2xl mb-4">Step 2: Startup Details</h2>
       <div className=' flex flex-row'>
             <div className="mb-8 mr-4">
-                <label className="block mb-2">Idea Subject</label>
-                <input name=' ideaSubject' type="text" value={formData.ideaSubject} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded" />
+                <label className="block mb-2">Idea</label>
+                <input name='ideaSubject' type="text" value={formData.ideaSubject} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded" />
             </div>
             <div className="mb-8 ml-4">
                 <label className="block mb-2">Market Size</label>
@@ -16,12 +16,12 @@ const Step2 = ({ nextStep, prevStep, handleInputChange, formData }) => {
         </div>
       <div className=' flex flex-row'>
             <div className="mb-8 mr-4">
-                <label className="block mb-2">Unique Selling Proposition</label>
+                <label className="block mb-2">Investors</label>
                 <input name='uso' type="text" value={formData.uso} onChange={handleInputChange()} className="w-full p-2  text-black   border border-gray-300 rounded" />
             </div>
             <div className="mb-8 ml-4">
                 <label className="block mb-2">Target Market</label>
-                <input name=' targetMarket' type="text"  value={formData.targetMarket} onChange={handleInputChange()} className="w-full p-2  text-black   border border-gray-300 rounded" />
+                <input name='targetMarket' type="text" value={formData.targetMarket} onChange={handleInputChange()}  className="w-full p-2  text-black   border border-gray-300 rounded" />
             </div>
       </div>
       <div className=' flex flex-row'>
