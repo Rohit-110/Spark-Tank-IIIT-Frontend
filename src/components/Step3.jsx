@@ -4,29 +4,29 @@ import {server} from '../index'
 
 const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
   const [termsChecked, setTermsChecked] = useState(false);
-  console.log("checking");
   const handleCheckboxChange = () => {
     setTermsChecked(!termsChecked);
   };
 
  
   const checkoutHandler = async (amount) => {
+    console.log(formData);
     try {
-       try{
-          const {data} = await axios.post(`${server}/form/submitform`,{
-              formData
-          },{
-            headers:{          
-              "Content-Type":"application/json",          
+      try {
+        const { data } = await axios.post(
+          `${server}/form/submitform`,
+          { formData },
+          {
+            headers: {
+              "Content-Type": "application/json",
             },
-            withCredentials: true,
-          }    
-            );
-          console.log("checking in helper");
-        }catch(error){
-            console.log("Error hai bhai");
-                console.log(error.response.data.message);
-        }
+            withCredentials: true, 
+          }
+        );
+        console.log("Form data submitted successfully:", data);
+      } catch (error) {
+        console.log("Error submitting form data:", error.response.data.message);
+      }
       const { data: { key } } = await axios.get(`${server}/user/getkey`, { withCredentials: true });
       const { data: { orders } } = await axios.post(`${server}/user/checkout`, { amount }, { withCredentials: true });
   
