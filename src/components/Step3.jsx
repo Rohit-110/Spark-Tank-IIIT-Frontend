@@ -21,6 +21,7 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
             withCredentials: true,
           }    
             );
+          console.log("checking in helper");
         }catch(error){
                 console.log(error.response.data.message);
         }
@@ -54,7 +55,6 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
       };
       var razor = new window.Razorpay(options);
       razor.open();
-      helper();
     } catch (error) {
       console.error('Error:', error.message);
     }
