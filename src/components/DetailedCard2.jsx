@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 
-const DetailedCard = ({ name, enrollmentno, batch, mobile, email, aadhar,teamname, description, idea, marketsize, verified, visible, onClose }) => {
-  if (!visible) return null;
+const DetailedCard2 = ({ name, enrollmentno, batch, mobile, email, aadhar,teamname, description, idea, marketsize, verified, onClose }) => {
 
-  const handleOnClose = (e) => {
-    if (e.target.id === "container") onClose();
-  };
-  
   const getColor = () => {
     return verified ? 'text-green-600' : 'text-red-600';
   };
 
   return (
-    <div id="container" onClick={handleOnClose} className="fixed inset-0 bg-opacity-40 backdrop-blur-sm flex justify-center items-center">
+    <div id="container"  className=" flex justify-center items-center">
       <div className="  bg-white shadow-lg rounded-lg border-2 border-black overflow-hidden">
         <div className='flex flex-col'>
           <div className="px-6 py-4">
@@ -72,16 +67,12 @@ const DetailedCard = ({ name, enrollmentno, batch, mobile, email, aadhar,teamnam
 };
 
 const App = () => {
-  const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <div className="h-full flex items-center justify-center">
-        <button className="bg-blue-500 p-2 rounded text-white" onClick={() => setShowModal(true)}>Open</button>
-      </div>
-      <DetailedCard onClose={() => setShowModal(false)} visible={showModal} />
+      <DetailedCard2 />
     </>
   );
 };
 
-export default DetailedCard;
+export default DetailedCard2;

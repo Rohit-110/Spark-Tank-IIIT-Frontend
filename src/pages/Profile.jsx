@@ -12,7 +12,7 @@ import Navbar from '../components/Navbar';
 import { server } from '..';
 
 const Profile = () => {    
-    const { setIsAuthenticated}= useContext(Context);
+    const { isAuthenticated , setIsAuthenticated}= useContext(Context);
 
     useEffect(() => {
         AOS.init({ duration: 1500 })
@@ -28,7 +28,6 @@ const Profile = () => {
         console.log(res);
         setAppliers(res.data.student);
         setIsAuthenticated(true);
-        toast.success('Success');
       }).catch((error)=>{
         toast.error('Error');
       })

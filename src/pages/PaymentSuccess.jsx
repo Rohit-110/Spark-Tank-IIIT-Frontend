@@ -2,8 +2,14 @@ import { useSearchParams } from "react-router-dom"
 import Button from '@mui/material/Button';
 import {Link} from 'react-router-dom';
 import toast from "react-hot-toast";
+import { useContext } from "react";
+import { Context } from "..";
 
 const PaymentSuccess = () => {
+  const {isAuthenticated} = useContext(Context);
+  if(!isAuthenticated){        
+      window.location.href = '/';
+  }
     const search = useSearchParams()[0]
     const reference_num = search.get("reference");
   return (

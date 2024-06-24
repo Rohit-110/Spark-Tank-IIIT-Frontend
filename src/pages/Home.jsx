@@ -7,8 +7,16 @@ import img5 from '../assets/img9.jpg'
 import img6 from '../assets/img8.jpg'
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { Context } from '..'
+
 
 const Home = () => {
+    const {isAuthenticated} = useContext(Context);
+    if(!isAuthenticated){        
+        window.location.href = '/';
+    }
+    
   return (
     <>
         <Navbar/>

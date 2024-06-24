@@ -7,8 +7,14 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import {server} from '../index.js'
+import { useContext } from 'react'
+import { Context } from '../index.js'
 
 const Submission = () => {
+  const {isAuthenticated} = useContext(Context);
+  if(!isAuthenticated){        
+      window.location.href = '/';
+  }
     const [showCard, setShowCard]=useState(false);
     const handleOnClose=()=>{setShowCard(false)};
     const [tasks,setTasks]=useState([]);
@@ -45,7 +51,7 @@ const Submission = () => {
                             <Card teamname={task.teamname} status={task.verified} investor={task.uso} idea={task.ideaSubject} />
                         </button>                
                         <DetailedCard name={task.name}  enrollmentno ={task.enrollmentNo} batch={task.batch} mobile ={task.mobileNo} email={task.emailId} aadhar={task.aadharNo} teamname={task.teamname} idea={task.ideaSubject} description={task.detailedDescription} marketsize={task.marketSize} verified={task.verified} visible={showCard} onClose={handleOnClose} />
-                        </div>
+                      </div>
                 ))
             } 
         </div>
