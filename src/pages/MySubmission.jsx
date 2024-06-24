@@ -37,10 +37,7 @@ const [tasks,setTasks]=useState([]);
             <div className='text-3xl font-semibold flex font-mono tracking-widest justify-center'>There are total {tasks.length} submission</div>
            {
             tasks.map((task, index) => (
-                <div className='mt-28 flex justify-center'>
-                    <button onClick={()=>{setShowCard(true)}}>
-                        <Card teamname={task.teamname} status={task.status} investor={task.investor} prof={task.idea} />
-                    </button>                
+                <div className='mt-28 flex justify-center'>              
                     <DetailedCard name={task.name}  enrollmentno ={task.enrollmentno} batch={task.enrollmentNo} mobile ={task.mobileNo} email={task.emailId} aadhar={task.aadharNo} teamname={task.teamname} idea={task.idea} description={task.description} marketsize={task.marketsize} verified={(task.verified) ? 'Verified' :'Not Verifed'} visible={showCard} onClose={handleOnClose} />
                 </div>
             ))
