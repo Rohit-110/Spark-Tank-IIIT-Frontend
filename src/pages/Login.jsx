@@ -6,10 +6,12 @@ import { server } from '../index.js';
 import { useContext } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
-
+  const navigate = useNavigate();
   const {setIsAuthenticated} = useContext(Context);
   const [email, setEmail]=useState("");
   const [password, setpassword]=useState("");
@@ -29,7 +31,7 @@ const Login = () => {
     );
     toast.success(data.message);
     setIsAuthenticated(true);
-    window.location.href = '/home';
+    navigate('/home');
   }catch(error){
           toast.error('Invalid Email or Password');
           console.log(error.response.data.message);
