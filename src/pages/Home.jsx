@@ -21,7 +21,7 @@ const Home = () => {
     <>
         <Navbar/>
         <div className=' text-wrap  font-mono tracking-widest text-xl mt-44 mx-5'>
-        Welcome to Spark Tank BPHC, where entrepreneurs can seamlessly pitch their innovative ideas. Our platform connects visionaries with investors, providing the tools and resources needed for successful presentations. Ignite your entrepreneurial journey with us and turn your ideas into reality.
+        Welcome to Spark Tank IIIT, where entrepreneurs can seamlessly pitch their innovative ideas. Our platform connects visionaries with investors, providing the tools and resources needed for successful presentations. Ignite your entrepreneurial journey with us and turn your ideas into reality.
         </div>
         <p className="relative font-mono tracking-widest text-xl mt-14 ml-28 ">
             <span className="absolute -left-4  -top-4 text-3xl  font-mono tracking-widest select-none">&#8220;</span>

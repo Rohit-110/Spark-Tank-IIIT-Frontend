@@ -19,9 +19,9 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
         "key": key,
         "amount": orders.amount,
         "currency": "INR",
-        "name": "BITS Hyderabad E-CELL",
+        "name": "IIIT ALLAHABAD E-CELL",
         "description": "Test Transaction",
-        "image": "https://upload.wikimedia.org/wikipedia/en/d/d3/BITS_Pilani-Logo.svg",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/2e/Indian_Institute_of_Information_Technology%2C_Allahabad_Logo.png",
         "order_id": orders.id,
         "callback_url": `${server}/user/paymentverification`,
         "prefill": {
