@@ -50,7 +50,7 @@ export default function Navbar() {
       <div className="container mx-auto flex justify-between items-center p-4">
         <h1 className="text-3xl font-bold">
           <Link to="/home" className={`${scrolled ? 'text-white' : 'text-white'} transition-colors duration-300`} style={{ textDecoration: 'none' }}>
-            Spark Tank IIIT
+            Spark Tank BPHC
           </Link>
         </h1>
         <nav className="hidden lg:flex justify-around">
