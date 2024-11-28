@@ -45,7 +45,7 @@ const Login = () => {
         
 
           <div className="mb-20 md:w-1/2 p-8 flex flex-col justify-center items-center mr-8">
-            <h1 className="text-6xl font-bold text-white text-center mb-4 font-mono">SPARK TANK <br/>BPHC</h1>
+            <h1 className="text-6xl font-bold text-white text-center mb-4 font-mono">SPARK TANK <br/>IIIT</h1>
 
             <div className="flex flex-col items-center space-y-4">
               <div className="flex items-center space-x-2">
