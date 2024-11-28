@@ -19,9 +19,9 @@ const Step3 = ({ prevStep, handleInputChange, formData, handleSubmit }) => {
         "key": key,
         "amount": orders.amount,
         "currency": "INR",
-        "name": "BPHC",
+        "name": "IIIT A",
         "description": "Test Transaction",
-        "image": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/BITS_Pilani-Logo.svg/278px-BITS_Pilani-Logo.svg.png",
+        "image": "https://upload.wikimedia.org/wikipedia/en/2/2e/Indian_Institute_of_Information_Technology%2C_Allahabad_Logo.png",
         "order_id": orders.id,
         "callback_url": `${server}/user/paymentverification`,
         "prefill": {
