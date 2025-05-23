@@ -22,6 +22,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("email" + email + "name" + name);
       let { data } = await axios.post(`${server}/user/new`, {
         email, password, name , studentId,  mobile, degree, batchYear}, {
         headers: {

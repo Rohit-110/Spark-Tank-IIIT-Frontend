@@ -59,4 +59,4 @@ const Submission = () => {
   )
 }
 
-export default Submission
+export default Submission;
