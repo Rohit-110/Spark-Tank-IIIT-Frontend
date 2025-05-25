@@ -47,9 +47,10 @@ const Submission = () => {
             {
                 tasks.map((task, index) => (
                     <div className='mt-28 flex justify-center'>
-                        <button onClick={()=>{setShowCard(true)}}>
+                      
+                        <div className="cursor-pointer w-[750px]" onClick={() => setShowCard(true)}>
                             <Card teamname={task.teamname} status={task.verified} investor={task.uso} idea={task.ideaSubject} />
-                        </button>                
+                        </div>                
                         <DetailedCard name={task.name}  enrollmentno ={task.enrollmentNo} batch={task.batch} mobile ={task.mobileNo} email={task.emailId} aadhar={task.aadharNo} teamname={task.teamname} idea={task.ideaSubject} description={task.detailedDescription} marketsize={task.marketSize} verified={task.verified} visible={showCard} onClose={handleOnClose} />
                       </div>
                 ))
