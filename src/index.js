@@ -6,7 +6,7 @@ import { createContext } from 'react';
 import { useState } from 'react';
 
 // Production API
-export const server="https://13.233.173.188:4000/api";
+export const server="https://13.127.209.14:4000/api";
 
 // Development API
 // export const server="http://localhost:4000/api";      
